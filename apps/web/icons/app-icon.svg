@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Situation Monitor icon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#0f131a" offset="0"/>
+      <stop stop-color="#0a0c11" offset="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#g)"/>
+  <circle cx="256" cy="256" r="156" fill="none" stroke="#3a8bff" stroke-width="16" opacity="0.28"/>
+  <path d="M128 256c0-70 58-128 128-128s128 58 128 128-58 128-128 128-128-58-128-128z" fill="none" stroke="#6ad4ff" stroke-width="12" opacity="0.65"/>
+  <path d="M180 270l38-46 46 26 34-44 34 18" fill="none" stroke="#9cf9e5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="218" cy="224" r="10" fill="#9cf9e5"/>
+  <circle cx="264" cy="250" r="10" fill="#9cf9e5"/>
+  <circle cx="298" cy="206" r="10" fill="#9cf9e5"/>
+  <circle cx="332" cy="224" r="10" fill="#9cf9e5"/>
+</svg>
