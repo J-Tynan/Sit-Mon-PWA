@@ -24,68 +24,69 @@ body {
 }
 
 #topbar {
-  min-height: 56px;
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+
   padding: 8px 12px;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(#070707, #050505);
+
   position: relative;
   z-index: 10;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .title {
   font-weight: 700;
   letter-spacing: 0.6px;
-  /* allow title to shrink with ellipsis but not force controls to move */
-  flex: 1 1 auto;
-  min-width: 0;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
-  z-index: 0;
+  flex: 0 0 auto;
 }
 
 .controls {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
-  /* allow controls to shrink when space is limited and pin them to the right */
-  flex: 0 1 auto;
-  margin-left: auto;
+
+  margin-left: auto;      /* pushes controls to the right */
   justify-content: flex-end;
-  flex-wrap: nowrap;
+
+  flex: 1 1 auto;
   min-width: 0;
-  overflow-x: auto;
-  /* hide browser scrollbars for the topbar controls while still allowing scroll */
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
-  /* don't allow controls to exceed available header space */
-  max-width: calc(100% - 160px);
-  /* ensure interactive controls render above the title to remain clickable */
-  position: relative;
-  z-index: 12;
 }
 
-/* Ensure interactive elements render above the title and are clickable */
-.controls select,
-.controls button,
-.controls input {
-  position: relative;
-  z-index: 20;
+/* Visually group related controls without affecting layout */
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
 }
 
-/* While a control is open (focus), hide the title to avoid visual overlap with native dropdowns */
-.select-open .title {
-  visibility: hidden;
+/* High-priority controls resist wrapping */
+.control-group.primary {
+  flex-shrink: 0;
 }
 
-.controls::-webkit-scrollbar { display: none; }
+/* Medium-priority controls wrap sooner */
+.control-group.secondary {
+  flex-shrink: 1;
+}
+
+/* Lowest-priority controls wrap first */
+.control-group.tertiary {
+  flex-shrink: 1;
+}
+
+/* Subtle separation between groups */
+.control-group:not(:last-child) {
+  margin-right: 6px;
+}
 
 .controls select,
 .controls button {
@@ -102,38 +103,9 @@ body {
   max-width: min(42vw, 340px);
 }
 
-@media (max-width: 720px) {
-  #topbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-  }
-  .title {
-    max-width: 100%;
-    margin-bottom: 2px;
-  }
+@media (max-width: 600px) {
   .controls {
-    max-width: 100%;
-    width: 100%;
-    flex-wrap: wrap;
     justify-content: flex-start;
-    overflow-x: visible;
-  }
-  .controls select {
-    max-width: 100%;
-  }
-}
-
-/* At moderate narrow widths reserve more space for controls and reduce title size */
-@media (max-width: 900px) {
-  #topbar {
-    grid-template-columns: 1fr minmax(300px, 520px);
-  }
-  .title {
-    font-size: 16px;
-  }
-  .controls {
-    max-width: 520px;
   }
 }
 
@@ -168,23 +140,6 @@ body {
 #settingsBtn:hover { border-color: #2a2a2a; }
 #settingsBtn:active { transform: translateY(1px); }
 
-#moreBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 6px;
-  border: 1px solid #222;
-  border-radius: 8px;
-  background: var(--panel);
-  color: var(--text);
-  cursor: pointer;
-}
-
-#moreBtn:hover { border-color: #2a2a2a; }
-#moreBtn:active { transform: translateY(1px); }
-
 #app {
   flex: 1 1 auto;
   min-height: 0;
@@ -215,20 +170,6 @@ body {
 
 /* Compact / narrow viewport layout adjustments */
 @media (max-width: 900px) {
-  /* Topbar compacts: show a 'more' button; other controls move into panel */
-  #moreBtn {
-    display: inline-flex;
-    order: 99;
-    margin-left: 8px;
-  }
-  /* Keep country/region/search visible on narrow view; only move view controls */
-  .controls #zoomLevel,
-  .controls #zoomInBtn,
-  .controls #zoomOutBtn,
-  .controls #resetBtn {
-    display: none;
-  }
-
   /* Attribution becomes centered and constrained to a single column at the bottom */
   #attribution {
     left: 12px;
@@ -246,26 +187,7 @@ body {
     right: 12px;
     max-width: calc(100% - 24px);
   }
-
-  /* More panel styling */
-  .more-panel {
-    position: absolute;
-    top: 64px;
-    left: 12px;
-    right: 12px;
-    margin: 0 auto;
-    z-index: 12;
-    background: rgba(12,12,12,0.95);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-  }
 }
-
-/* Default hide more button and panel on wide screens */
-#moreBtn { display: none; }
-.more-panel { display: none; }
 
 #status {
   position: absolute;
@@ -317,12 +239,6 @@ body {
 
 #attribution a:hover {
   text-decoration: underline;
-}
-
-@media (max-width: 900px) {
-  #attribution {
-    white-space: normal;
-  }
 }
 
 #globe-container {
@@ -610,4 +526,32 @@ body {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Mobile refinement: reduce visual weight without changing layout */
+@media (max-width: 600px) {
+
+  /* Remove background pills so wrapped rows feel lighter */
+  .control-group {
+    background: transparent;
+    padding: 0;
+  }
+
+  /* Slightly tighten control spacing on small screens */
+  .controls {
+    gap: 6px;
+    row-gap: 6px;
+  }
+
+  /* Make inputs and selects feel less cramped */
+  .controls select,
+  .controls input,
+  .controls button {
+    padding: 6px 8px;
+  }
+
+  /* Keep title visually distinct but compact */
+  .title {
+    font-size: 15px;
+  }
 }

@@ -1,0 +1,317 @@
+ Directory of C:\Projects\Situation-Monitor-PWA
+
+15/01/2026  17:11    <DIR>          .
+12/01/2026  09:04    <DIR>          ..
+15/01/2026  11:41    <DIR>          .github
+15/01/2026  11:41               965 .gitignore
+13/01/2026  07:25    <DIR>          .vscode
+13/01/2026  07:25    <DIR>          apps
+15/01/2026  11:41    <DIR>          core
+15/01/2026  11:41    <DIR>          docs
+15/01/2026  17:12                 0 folder.txt
+15/01/2026  11:41             1,489 README.md
+               3 File(s)          2,454 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git
+
+15/01/2026  17:11    <DIR>          ..
+14/01/2026  18:34             2,768 COMMIT_EDITMSG
+15/01/2026  15:18               379 config
+14/01/2026  18:29                73 description
+15/01/2026  17:01               213 FETCH_HEAD
+14/01/2026  18:34                21 HEAD
+14/01/2026  18:29    <DIR>          hooks
+14/01/2026  18:34             5,379 index
+14/01/2026  18:29    <DIR>          info
+14/01/2026  18:29    <DIR>          logs
+15/01/2026  17:01    <DIR>          objects
+14/01/2026  18:32                41 ORIG_HEAD
+14/01/2026  18:32                41 REBASE_HEAD
+14/01/2026  18:30    <DIR>          refs
+               8 File(s)          8,915 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\hooks
+
+14/01/2026  18:29    <DIR>          .
+14/01/2026  18:29               478 applypatch-msg.sample
+14/01/2026  18:29               896 commit-msg.sample
+14/01/2026  18:29             4,726 fsmonitor-watchman.sample
+14/01/2026  18:29               189 post-update.sample
+14/01/2026  18:29               424 pre-applypatch.sample
+14/01/2026  18:29             1,649 pre-commit.sample
+14/01/2026  18:29               416 pre-merge-commit.sample
+14/01/2026  18:29             1,374 pre-push.sample
+14/01/2026  18:29             4,898 pre-rebase.sample
+14/01/2026  18:29               544 pre-receive.sample
+14/01/2026  18:29             1,492 prepare-commit-msg.sample
+14/01/2026  18:29             2,783 push-to-checkout.sample
+14/01/2026  18:29             2,308 sendemail-validate.sample
+14/01/2026  18:29             3,650 update.sample
+              14 File(s)         25,827 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\info
+
+14/01/2026  18:29    <DIR>          .
+14/01/2026  18:29               240 exclude
+               1 File(s)            240 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\logs
+
+14/01/2026  18:29    <DIR>          .
+14/01/2026  18:34             1,534 HEAD
+14/01/2026  18:30    <DIR>          refs
+               1 File(s)          1,534 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\logs\refs
+
+14/01/2026  18:30    <DIR>          .
+14/01/2026  18:29    <DIR>          ..
+14/01/2026  18:30    <DIR>          heads
+14/01/2026  18:30    <DIR>          remotes
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\logs\refs\heads
+
+14/01/2026  18:30    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+14/01/2026  18:34               780 main
+               1 File(s)            780 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\logs\refs\remotes
+
+14/01/2026  18:30    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+15/01/2026  08:13    <DIR>          origin
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\logs\refs\remotes\origin
+
+15/01/2026  08:13    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+15/01/2026  08:13               159 gh-pages
+14/01/2026  18:30               145 HEAD
+15/01/2026  08:13               471 main
+               3 File(s)            775 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\objects\info
+
+14/01/2026  18:29    <DIR>          .
+15/01/2026  17:01    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\objects\pack
+
+14/01/2026  18:29    <DIR>          .
+15/01/2026  17:01    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\refs
+
+14/01/2026  18:30    <DIR>          .
+14/01/2026  18:34    <DIR>          heads
+14/01/2026  18:30    <DIR>          remotes
+14/01/2026  18:29    <DIR>          tags
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\refs\heads
+
+14/01/2026  18:38    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+14/01/2026  18:34                41 main
+               1 File(s)             41 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\refs\remotes
+
+14/01/2026  18:30    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+15/01/2026  17:01    <DIR>          origin
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\refs\remotes\origin
+
+15/01/2026  17:01    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+15/01/2026  08:13                41 gh-pages
+14/01/2026  18:30                30 HEAD
+15/01/2026  08:13                41 main
+               3 File(s)            112 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.git\refs\tags
+
+14/01/2026  18:29    <DIR>          .
+14/01/2026  18:30    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.github
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  17:11    <DIR>          ..
+15/01/2026  11:41    <DIR>          workflows
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.github\workflows
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41               524 deploy.yml
+               1 File(s)            524 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\.vscode
+
+13/01/2026  07:25    <DIR>          .
+15/01/2026  17:11    <DIR>          ..
+13/01/2026  16:11               195 settings.json
+               1 File(s)            195 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps
+
+13/01/2026  07:25    <DIR>          .
+15/01/2026  17:11    <DIR>          ..
+15/01/2026  11:41    <DIR>          web
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web
+
+15/01/2026  11:41    <DIR>          .
+13/01/2026  07:25    <DIR>          ..
+15/01/2026  11:41    <DIR>          dev
+15/01/2026  11:41    <DIR>          icons
+15/01/2026  16:27             5,135 index.html
+15/01/2026  11:41               525 manifest.webmanifest
+15/01/2026  11:41             3,359 service-worker.js
+15/01/2026  11:41    <DIR>          src
+15/01/2026  16:28            10,657 styles.css
+               4 File(s)         19,676 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\dev
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41             6,599 nelc-proxy.mjs
+15/01/2026  11:41               927 README-nelc-proxy.md
+               2 File(s)          7,526 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\icons
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41               964 app-icon.svg
+               1 File(s)            964 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41    <DIR>          bin
+15/01/2026  11:41    <DIR>          data
+15/01/2026  11:41    <DIR>          data-src
+15/01/2026  11:41    <DIR>          globe
+15/01/2026  11:41    <DIR>          layers
+15/01/2026  12:15            24,089 main.js
+15/01/2026  11:41    <DIR>          ui
+               1 File(s)         24,089 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src\bin
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41             1,301 nelcAdapter.js
+               1 File(s)          1,301 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src\data
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41            75,942 airports.json
+15/01/2026  11:41                52 english-regions.json
+15/01/2026  11:41             3,517 nelc-demo-collections-5ahead.json
+15/01/2026  11:41             1,487 nelc-demo-subareas.json
+15/01/2026  11:41           286,654 populated-places.json
+15/01/2026  11:41            28,419 ports.json
+15/01/2026  11:41             1,222 uk-boundaries.json
+15/01/2026  11:41                 0 uk-countries.json
+15/01/2026  11:41         1,027,451 uk-local-authority-districts.json
+15/01/2026  11:41           952,171 uk-regions.json
+15/01/2026  11:41           891,296 urban-areas.json
+15/01/2026  11:41         1,972,880 world-countries.json
+              12 File(s)      5,241,091 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src\data-src
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41               182 .gitkeep
+13/01/2026  15:49       168,697,215 Countries_Dec_24_Boundaries_UK_BFC.geojson
+13/01/2026  16:04       280,613,686 Local_Authority_Districts_Dec_24_Boundaries_UK_BFC.geojson
+15/01/2026  11:41           290,778 ne_10m_airports.zip
+15/01/2026  11:41         2,811,199 ne_10m_populated_places.zip
+15/01/2026  11:41            51,824 ne_10m_ports.zip
+13/01/2026  13:45           799,734 ne_50m_admin_0_countries.zip
+15/01/2026  11:41           107,083 ne_50m_airports.zip
+15/01/2026  11:41           553,649 ne_50m_populated_places.zip
+15/01/2026  11:41            14,548 ne_50m_ports.zip
+13/01/2026  14:13           452,644 ne_50m_urban_areas.zip
+              11 File(s)    454,392,542 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src\globe
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41             7,996 CameraController.js
+15/01/2026  11:41             4,612 GlobeRenderer.js
+15/01/2026  11:41               571 latLong.js
+15/01/2026  11:41             8,974 Starfield.js
+               4 File(s)         22,153 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src\layers
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41             1,070 BaseLayer.js
+15/01/2026  11:41             6,450 BoundaryLayer.js
+15/01/2026  11:41               863 FilteredBoundaryLayer.js
+15/01/2026  11:41             1,157 LayerManager.js
+15/01/2026  11:41             9,242 NaturalEarthPointsZipLayer.js
+15/01/2026  11:41            13,166 NaturalEarthPopulatedPlacesLayer.js
+15/01/2026  11:41            15,067 NelcBinDemoLayer.js
+15/01/2026  11:41             7,032 SelectionHighlight.js
+               8 File(s)         54,047 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\apps\web\src\ui
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+15/01/2026  11:41             7,195 BinPanel.js
+15/01/2026  11:41             2,470 LayersPanel.js
+15/01/2026  11:41                 0 TopBar.js
+               3 File(s)          9,665 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\core
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  17:11    <DIR>          ..
+15/01/2026  11:41                 0 README.md
+13/01/2026  07:25    <DIR>          region
+13/01/2026  07:25    <DIR>          state
+               1 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\core\region
+
+13/01/2026  07:25    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\core\state
+
+13/01/2026  07:25    <DIR>          .
+15/01/2026  11:41    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of C:\Projects\Situation-Monitor-PWA\docs
+
+15/01/2026  11:41    <DIR>          .
+15/01/2026  17:11    <DIR>          ..
+15/01/2026  11:41                 0 architecture.md
+15/01/2026  11:41                 0 roadmap.md
+15/01/2026  11:41                 0 ui-language.md
+               3 File(s)              0 bytes

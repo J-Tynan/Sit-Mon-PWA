@@ -150,77 +150,7 @@ if (sparkleBtn) {
   });
 })();
 
-// --- Responsive 'more' panel for compact topbar ---
-const moreBtn = document.getElementById('moreBtn');
-const morePanel = document.getElementById('more-panel');
 
-// Elements to move into the more panel when compact
-// Only move non-essential view controls into the "Views" panel on narrow screens.
-const movableSelectors = ['#resetBtn', '#zoomLevel', '#zoomInBtn', '#zoomOutBtn'];
-const movableElements = [];
-
-for (const sel of movableSelectors) {
-  const el = document.querySelector(sel);
-  if (el) movableElements.push(el);
-}
-
-// Keep track of original parent and nextSibling for restoration
-const originalPositions = new Map();
-
-function moveToMorePanel() {
-  if (!morePanel) return;
-  for (const el of movableElements) {
-    if (!el) continue;
-    if (!originalPositions.has(el)) originalPositions.set(el, { parent: el.parentNode, next: el.nextSibling });
-    morePanel.appendChild(el);
-  }
-  morePanel.hidden = true; // collapsed by default
-  morePanel.style.display = '';
-}
-
-function restoreFromMorePanel() {
-  for (const el of movableElements) {
-    const pos = originalPositions.get(el);
-    if (!pos) continue;
-    if (pos.next && pos.parent.contains(pos.next)) {
-      pos.parent.insertBefore(el, pos.next);
-    } else {
-      pos.parent.appendChild(el);
-    }
-  }
-  if (morePanel) {
-    morePanel.hidden = true;
-    morePanel.style.display = 'none';
-  }
-}
-
-function handleResizeForTopbar() {
-  const compact = window.innerWidth <= 900;
-  if (compact) {
-    document.body.classList.add('compact-topbar');
-    moveToMorePanel();
-  } else {
-    document.body.classList.remove('compact-topbar');
-    restoreFromMorePanel();
-  }
-}
-
-if (moreBtn && morePanel) {
-  moreBtn.addEventListener('click', () => {
-    const isHidden = morePanel.hasAttribute('hidden');
-    if (isHidden) {
-      morePanel.removeAttribute('hidden');
-      morePanel.setAttribute('aria-hidden', 'false');
-    } else {
-      morePanel.setAttribute('hidden', '');
-      morePanel.setAttribute('aria-hidden', 'true');
-    }
-  });
-}
-
-window.addEventListener('resize', handleResizeForTopbar);
-// Run once on load
-handleResizeForTopbar();
 
 applyFpsVisibility();
 
@@ -684,7 +614,8 @@ const portsLayer = new NaturalEarthPointsZipLayer({
 const populatedPlacesLayer = new NaturalEarthPopulatedPlacesLayer({
   id: 'ne-populated-places-uk',
   name: 'Populated places (UK)',
-  zipUrl: assetUrl('src/data-src/ne_10m_populated_places.zip'),
+  // Use the pre-filtered UK GeoJSON to avoid downloading the global ZIP
+  geojsonUrl: assetUrl('src/data/uk-populated-places-10m.json'),
   bounds: UK_BOUNDS.UK,
   filterFeature: (feature) => {
     const coords = feature?.geometry?.coordinates;
