@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # Change to your default branch if not 'main'
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -22,7 +22,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/web  # This uploads your subfolder as the site root
+          path: apps/web
 
       - name: Deploy to GitHub Pages
         id: deployment
