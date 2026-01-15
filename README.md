@@ -3,8 +3,8 @@
 A personal, installable PWA for situational awareness.
 
 This project is a situational awareness console inspired by strategic command‑center 
-interfaces (e.g. Defcon). The goal is to consolidate signals — not stories — into a
-calm, focused UI that helps users understand what is happening in a chosen region.
+interfaces (e.g. Defcon). The goal is to consolidate signals into a calm, 
+focused UI that helps users understand what is happening in a chosen region.
 
 ---
 
