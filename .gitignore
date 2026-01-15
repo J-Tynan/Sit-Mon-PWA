@@ -31,6 +31,8 @@ apps/web/src/data-src/Countries_Dec_24_Boundaries_UK_BFC.geojson
 apps/web/src/data-src/Local_Authority_Districts_Dec_24_Boundaries_UK_BFC.geojson
 apps/web/src/data-src/ne_50m_admin_0_countries.zip
 apps/web/src/data-src/ne_50m_urban_areas.zip
+apps/web/src/data-src/ne_10m_populated_places.zip
+apps/web/src/data-src/*.zip
 
 # Common raw GIS formats (local-only)
 apps/web/src/data-src/*.geojson
