@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v39';
+const CACHE_VERSION = 'v40';
 const STATIC_CACHE = `situation-static-${CACHE_VERSION}`;
 
 const SCOPE = self.registration?.scope || self.location.origin + '/';
