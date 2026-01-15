@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "council": "North East Lincolnshire Council",
+  "ladId": "E06000012",
+  "subareas": [
+    {
+      "id": "NELC_GRIMSBY_CENTRE",
+      "name": "Grimsby (Town Centre)",
+      "kind": "town",
+      "lat": 53.5656,
+      "lon": -0.0756,
+      "postcode": "DN31 1AB"
+    },
+    {
+      "id": "NELC_CLEETHORPES_SEAFRONT",
+      "name": "Cleethorpes (Seafront)",
+      "kind": "town",
+      "lat": 53.5598,
+      "lon": -0.0287,
+      "postcode": "DN35 8AB"
+    },
+    {
+      "id": "NELC_IMMINGHAM",
+      "name": "Immingham",
+      "kind": "town",
+      "lat": 53.6128,
+      "lon": -0.2228,
+      "postcode": "DN40 1AA"
+    },
+    {
+      "id": "NELC_HUMBERSTON",
+      "name": "Humberston",
+      "kind": "village",
+      "lat": 53.5306,
+      "lon": -0.0407,
+      "postcode": "DN36 4AA"
+    },
+    {
+      "id": "NELC_WALTHAM",
+      "name": "Waltham",
+      "kind": "village",
+      "lat": 53.5169,
+      "lon": -0.1071,
+      "postcode": "DN37 0AA"
+    },
+    {
+      "id": "NELC_HEALING",
+      "name": "Healing",
+      "kind": "village",
+      "lat": 53.5756,
+      "lon": -0.1751,
+      "postcode": "DN41 7AA"
+    },
+    {
+      "id": "NELC_LACEBY",
+      "name": "Laceby",
+      "kind": "village",
+      "lat": 53.5403,
+      "lon": -0.1672,
+      "postcode": "DN37 7AA"
+    },
+    {
+      "id": "NELC_STALLINGBOROUGH",
+      "name": "Stallingborough",
+      "kind": "village",
+      "lat": 53.5873,
+      "lon": -0.1837,
+      "postcode": "DN41 8AA"
+    }
+  ]
+}

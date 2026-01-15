@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "timezone": "Europe/London",
+  "scheduleBySubareaId": {
+    "NELC_GRIMSBY_CENTRE": [
+      { "date": "2026-01-15", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-01-22", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-01-29", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-05", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-12", "stream": "Household Waste", "color": "#15651C" }
+    ],
+    "NELC_CLEETHORPES_SEAFRONT": [
+      { "date": "2026-01-16", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-01-23", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-01-30", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-06", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-13", "stream": "Paper", "color": "#1E5BFF" }
+    ],
+    "NELC_IMMINGHAM": [
+      { "date": "2026-01-19", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-01-26", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-02", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-02-09", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-16", "stream": "Cans, Plastic & Glass", "color": "#111111" }
+    ],
+    "NELC_HUMBERSTON": [
+      { "date": "2026-01-20", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-01-27", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-02-03", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-10", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-17", "stream": "Household Waste", "color": "#15651C" }
+    ],
+    "NELC_WALTHAM": [
+      { "date": "2026-01-21", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-01-28", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-04", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-11", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-02-18", "stream": "Household Waste", "color": "#15651C" }
+    ],
+    "NELC_HEALING": [
+      { "date": "2026-01-22", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-01-29", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-05", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-02-12", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-19", "stream": "Paper", "color": "#1E5BFF" }
+    ],
+    "NELC_LACEBY": [
+      { "date": "2026-01-23", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-01-30", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-02-06", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-13", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-20", "stream": "Household Waste", "color": "#15651C" }
+    ],
+    "NELC_STALLINGBOROUGH": [
+      { "date": "2026-01-24", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-01-31", "stream": "Paper", "color": "#1E5BFF" },
+      { "date": "2026-02-07", "stream": "Cans, Plastic & Glass", "color": "#111111" },
+      { "date": "2026-02-14", "stream": "Household Waste", "color": "#15651C" },
+      { "date": "2026-02-21", "stream": "Paper", "color": "#1E5BFF" }
+    ]
+  }
+}
