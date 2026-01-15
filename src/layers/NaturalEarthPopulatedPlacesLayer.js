@@ -69,6 +69,7 @@ export class NaturalEarthPopulatedPlacesLayer extends BaseLayer {
       id = 'ne-populated-places-uk',
       name = 'Populated places (UK)',
       zipUrl,
+      geojsonUrl,
       bounds,
       radius = 1.004,
       labelRadius = 1.007,
@@ -87,10 +88,11 @@ export class NaturalEarthPopulatedPlacesLayer extends BaseLayer {
 
     super(id, name);
 
-    if (!zipUrl) throw new Error('NaturalEarthPopulatedPlacesLayer requires zipUrl');
+    if (!zipUrl && !geojsonUrl) throw new Error('NaturalEarthPopulatedPlacesLayer requires zipUrl or geojsonUrl');
     if (!bounds) throw new Error('NaturalEarthPopulatedPlacesLayer requires bounds');
 
     this.zipUrl = zipUrl;
+    this.geojsonUrl = geojsonUrl;
     this.bounds = bounds;
     this.radius = radius;
     this.labelRadius = labelRadius;
@@ -274,17 +276,31 @@ export class NaturalEarthPopulatedPlacesLayer extends BaseLayer {
     if (this.geojson) return Promise.resolve(this.geojson);
     if (this.dataPromise) return this.dataPromise;
 
-    this.dataPromise = fetch(this.zipUrl)
-      .then((res) => {
-        if (!res.ok) throw new Error(`Failed to fetch ${this.zipUrl}: ${res.status}`);
-        return res.arrayBuffer();
-      })
-      .then(async (buffer) => {
-        const parsed = await shp(buffer);
-        const geojson = normalizeParsedGeoJson(parsed);
-        this.geojson = geojson;
-        return geojson;
-      });
+    // Support either a GeoJSON URL (already filtered) or a ZIP (shpjs) archive.
+    if (this.geojsonUrl) {
+      this.dataPromise = fetch(this.geojsonUrl)
+        .then((res) => {
+          if (!res.ok) throw new Error(`Failed to fetch ${this.geojsonUrl}: ${res.status}`);
+          return res.json();
+        })
+        .then((parsed) => {
+          const geojson = normalizeParsedGeoJson(parsed);
+          this.geojson = geojson;
+          return geojson;
+        });
+    } else {
+      this.dataPromise = fetch(this.zipUrl)
+        .then((res) => {
+          if (!res.ok) throw new Error(`Failed to fetch ${this.zipUrl}: ${res.status}`);
+          return res.arrayBuffer();
+        })
+        .then(async (buffer) => {
+          const parsed = await shp(buffer);
+          const geojson = normalizeParsedGeoJson(parsed);
+          this.geojson = geojson;
+          return geojson;
+        });
+    }
 
     return this.dataPromise;
   }
