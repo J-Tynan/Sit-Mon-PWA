@@ -426,7 +426,7 @@ function selectLad(value) {
 
     selectionHighlight
       .flashGeoJsonFeature({
-        dataUrl: assetUrl('src/data/uk-local-authority-districts.json'),
+        dataUrl: assetUrl('src/data/uk-lads.v1.topo.json'),
         matchFn: (f) => f?.properties?.id === match.id,
         color: 0x00ff66,
         durationMs: 300
@@ -437,8 +437,16 @@ function selectLad(value) {
 
 async function loadLads() {
   try {
-    const resp = await fetch(assetUrl('src/data/uk-local-authority-districts.json'));
-    const data = await resp.json();
+    const resp = await fetch(assetUrl('src/data/uk-lads.v1.topo.json'));
+    const raw = await resp.json();
+    let data = raw;
+    try {
+      const { loadGeoData } = await import('./lib/geo.js');
+      data = await loadGeoData(raw);
+    } catch (err) {
+      // If conversion fails, fall back to raw payload
+      data = raw;
+    }
     ladIndex = (data.features || []).map((feature) => {
       const props = feature.properties || {};
       const name = (props.name || '').trim() || props.id || 'Unknown LAD';
@@ -559,14 +567,14 @@ const ukRegionsLayer = new BoundaryLayer({
 const ukLocalAuthoritiesLayer = new BoundaryLayer({
   id: 'uk-lad',
   name: 'UK local councils (LAD)',
-  dataUrl: assetUrl('src/data/uk-local-authority-districts.json'),
+  dataUrl: assetUrl('src/data/uk-lads.v1.topo.json'),
   color: 0xffb020
 });
 
 const nelcBinDemoLayer = new NelcBinDemoLayer({
   id: 'bin-demo-nelc',
   name: 'Bin collection (demo: NELC)',
-  dataUrl: assetUrl('src/data/uk-local-authority-districts.json'),
+  dataUrl: assetUrl('src/data/uk-lads.v1.topo.json'),
   postcode: 'DN32 0NE',
   ladId: 'E06000012',
   // Start red until we successfully fetch schedule colour.

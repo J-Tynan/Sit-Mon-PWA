@@ -105,8 +105,23 @@ export class BoundaryLayer extends BaseLayer {
         return res.json();
       })
       .then((json) => {
-        this.boundaryData = json;
-        return json;
+        // Support TopoJSON (Topology) inputs by converting to GeoJSON.
+        try {
+          // Lazy import of loader helper to avoid adding a runtime dependency unless needed.
+          // This module exports `loadGeoData` which uses topojson-client's `feature`.
+          // Import relative to src/layers — path: '../lib/geo.js'
+          // eslint-disable-next-line import/no-cycle
+          return import('../lib/geo.js').then(({ loadGeoData }) =>
+          // Ensure we await the conversion so `this.boundaryData` is the resolved GeoJSON object
+          loadGeoData(json).then((geo) => {
+            this.boundaryData = geo;
+            return geo;
+          })
+        );
+        } catch (e) {
+          this.boundaryData = json;
+          return json;
+        }
       });
 
     return this.dataPromise;
