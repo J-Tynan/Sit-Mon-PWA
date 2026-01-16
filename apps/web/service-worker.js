@@ -29,7 +29,7 @@ const ASSETS = [
 	'src/data/world-countries.json',
 	'src/data/uk-regions.json',
 	'src/data/english-regions.json',
-	'src/data/uk-local-authority-districts.json',
+	'src/data/uk-lads.v1.topo.json',
 	'src/data/nelc-demo-subareas.json',
 	'src/data/nelc-demo-collections-5ahead.json',
 	'icons/app-icon.svg'

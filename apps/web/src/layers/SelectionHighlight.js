@@ -50,7 +50,15 @@ export class SelectionHighlight {
         if (!res.ok) throw new Error(`Failed to fetch ${dataUrl}: ${res.status}`);
         return res.json();
       })
-      .then((json) => json);
+      .then(async (json) => {
+        // Convert TopoJSON topology to GeoJSON feature collection if needed.
+        try {
+          const { loadGeoData } = await import('../lib/geo.js');
+          return loadGeoData(json);
+        } catch {
+          return json;
+        }
+      });
 
     this.geojsonCache.set(dataUrl, promise);
     return promise;
