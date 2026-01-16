@@ -614,8 +614,8 @@ const portsLayer = new NaturalEarthPointsZipLayer({
 const populatedPlacesLayer = new NaturalEarthPopulatedPlacesLayer({
   id: 'ne-populated-places-uk',
   name: 'Populated places (UK)',
-  // Use the pre-filtered UK GeoJSON to avoid downloading the global ZIP
-  geojsonUrl: assetUrl('src/data/uk-populated-places-10m.json'),
+  // Use the pre-filtered UK GeoJSON (v1) to avoid downloading the global ZIP
+  geojsonUrl: assetUrl('src/data/uk-populated-places.v1.json'),
   bounds: UK_BOUNDS.UK,
   filterFeature: (feature) => {
     const coords = feature?.geometry?.coordinates;
