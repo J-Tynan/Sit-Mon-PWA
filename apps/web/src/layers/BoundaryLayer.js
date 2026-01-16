@@ -112,8 +112,8 @@ export class BoundaryLayer extends BaseLayer {
           // Import relative to src/layers — path: '../lib/geo.js'
           // eslint-disable-next-line import/no-cycle
           return import('../lib/geo.js').then(({ loadGeoData }) =>
-          // Ensure we await the conversion so `this.boundaryData` is the resolved GeoJSON object
-          loadGeoData(json).then((geo) => {
+          // Support sync or async conversion results by normalising to a Promise
+          Promise.resolve(loadGeoData(json)).then((geo) => {
             this.boundaryData = geo;
             return geo;
           })
