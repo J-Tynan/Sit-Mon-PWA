@@ -594,7 +594,7 @@ const airportsLayer = new NaturalEarthPointsZipLayer({
     return isUkFeature(feature, lat, lon);
   },
   color: 0x39d5ff,
-  iconSvgUrl: 'https://unpkg.com/heroicons@2.1.5/24/outline/paper-airplane.svg',
+  iconSvgUrl: assetUrl('icons/paper-airplane.svg'),
   pointSizePx: 24,
   opacity: 0.95,
   maxPoints: 8000
@@ -613,7 +613,7 @@ const portsLayer = new NaturalEarthPointsZipLayer({
     return isUkFeature(feature, lat, lon);
   },
   color: 0xffbf3b,
-  iconSvgUrl: 'https://unpkg.com/heroicons@2.1.5/24/outline/lifebuoy.svg',
+  iconSvgUrl: assetUrl('icons/lifebuoy.svg'),
   pointSizePx: 24,
   opacity: 0.95,
   maxPoints: 8000

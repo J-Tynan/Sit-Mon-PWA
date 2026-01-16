@@ -1,5 +1,5 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import shp from 'https://unpkg.com/shpjs@6.2.0/dist/shp.esm.min.js';
+import * as THREE from 'three';
+import shp from 'shpjs';
 import { BaseLayer } from './BaseLayer.js';
 import { latLongToVector3 } from '../globe/latLong.js';
 
