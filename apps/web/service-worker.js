@@ -26,6 +26,7 @@ const ASSETS = [
 	'src/bin/nelcAdapter.js',
 	'src/data/uk-boundaries.json',
 	'src/data/uk-populated-places.v1.json',
+	'node_modules/topojson-client/src/index.js',
 	'src/data/world-countries.json',
 	'src/data/uk-regions.json',
 	'src/data/english-regions.json',
