@@ -1,4 +1,4 @@
-\# Situation Monitor PWA
+\# \[WIP] Situation Monitor PWA
 
 
 
@@ -6,11 +6,11 @@ A personal, installable Progressive Web App for calm, focused situational awaren
 
 
 
-Situation Monitor is a modular geospatial console inspired by strategic command‑center
+Situation Monitor is a modular geospatial console inspired by strategic command‑center 
 
-interfaces (e.g. \*Defcon\*). It consolidates geographic and contextual signals into a
+(C2) interfaces (e.g. \*Defcon\*). It consolidates geographic and contextual signals into 
 
-low‑noise, map‑centric UI that helps users understand what is happening in a chosen
+a low‑noise, map‑centric UI that helps users understand what is happening in a chosen
 
 country or region.
 
@@ -42,35 +42,35 @@ https://j-tynan.github.io/Sit-Mon-PWA/
 
 
 
-\- \*\*Architect globally, filter locally\*\*  
+\- \*\*Architect globally, filter locally\*\*
 
-&nbsp; Data is sourced at global or national scale, then filtered client‑side to the
+  Data is sourced at global or national scale, then filtered client‑side to the
 
-&nbsp; user’s selected country or region.
-
-
-
-\- \*\*Separation of concerns\*\*  
-
-&nbsp; Rendering, data loading, filtering, and UI are cleanly separated. Layers can be
-
-&nbsp; added, removed, or replaced without touching core logic.
+  user’s selected country or region.
 
 
 
-\- \*\*Signal over noise\*\*  
+\- \*\*Separation of concerns\*\*
 
-&nbsp; Motion, colour, labels, and density are meaningful. The UI avoids clutter,
+  Rendering, data loading, filtering, and UI are cleanly separated. Layers can be
 
-&nbsp; gamification, and addictive interaction patterns.
+  added, removed, or replaced without touching core logic.
 
 
 
-\- \*\*Offline‑first, low‑cost\*\*  
+\- \*\*Signal over noise\*\*
 
-&nbsp; Designed as an installable PWA with static assets, local caching, and minimal
+  Motion, colour, labels, and density are meaningful. The UI avoids clutter,
 
-&nbsp; backend requirements.
+  gamification, and addictive interaction patterns.
+
+
+
+\- \*\*Offline‑first, low‑cost\*\*
+
+  Designed as an installable PWA with static assets, local caching, and minimal
+
+  backend requirements.
 
 
 
@@ -182,9 +182,43 @@ From `apps/web`:
 
 
 
-```bash
-
 http-server -c 30 .
+
+Open the printed localhost URL.
+
+
+
+---
+
+
+
+\## Project status
+
+
+
+Active development.
+
+
+
+The core architecture, rendering pipeline, and data workflows are now stable.
+
+Current work focuses on refinement, performance tuning, and selective feature
+
+expansion rather than rapid prototyping.
+
+
+
+No live data feeds are enabled by default. Work in progress.
+
+
+
+---
+
+
+
+\## License
+
+Personal project. Licensing to be defined if the project is opened more broadly.
 
 
 
