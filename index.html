@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Situation Monitor</title>
 
+  <!-- Import map: resolve bare module specifier for topojson-client in the browser -->
+  <script type="importmap">
+    {
+      "imports": {
+        "topojson-client": "/node_modules/topojson-client/src/index.js",
+        "three": "/node_modules/three/build/three.module.js",
+        "shpjs": "/node_modules/shpjs/dist/shp.esm.min.js"
+      }
+    }
+  </script>
+
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icons/app-icon.svg" sizes="any" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="icons/app-icon.svg" />

@@ -1,4 +1,4 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 import { latLongToVector3 } from '../globe/latLong.js';
 
 export class SelectionHighlight {
@@ -50,7 +50,15 @@ export class SelectionHighlight {
         if (!res.ok) throw new Error(`Failed to fetch ${dataUrl}: ${res.status}`);
         return res.json();
       })
-      .then((json) => json);
+      .then(async (json) => {
+        // Convert TopoJSON topology to GeoJSON feature collection if needed.
+        try {
+          const { loadGeoData } = await import('../lib/geo.js');
+          return loadGeoData(json);
+        } catch {
+          return json;
+        }
+      });
 
     this.geojsonCache.set(dataUrl, promise);
     return promise;

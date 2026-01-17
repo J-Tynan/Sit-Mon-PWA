@@ -1,0 +1,19 @@
+{
+  "name": "situation-monitor-web",
+  "private": true,
+  "scripts": {
+    "build:data:lads": "mapshaper src/data-src/Local_Authority_Districts_Dec_24_Boundaries_UK_BFC.geojson -simplify 2% keep-shapes -o format=topojson src/data/uk-lads.v1.topo.json",
+    "build:data:places": "mapshaper src/data-src/ne_10m_populated_places.zip combine-files -filter \"SCALERANK <= 10 && (ADM0_A3 == 'GBR' || ISO_A2 == 'GB')\" -clean -merge-layers -o format=geojson src/data/uk-populated-places.v1.json",
+    "build:data:places:trim": "mapshaper src/data/uk-populated-places.v1.json -filter-fields NAME,NAMEASCII,SCALERANK,ADM0_A3,ISO_A2,TIMEZONE -o format=geojson src/data/uk-populated-places.v2.trimmed.json",
+    "build:data:places:topo": "mapshaper src/data/uk-populated-places.v2.trimmed.json -o format=topojson src/data/uk-populated-places.v2.topo.json"
+  },
+  "devDependencies": {
+    "mapshaper": "^0.6.0"
+  },
+  "dependencies": {
+    "shpjs": "^6.2.0",
+    "three": "^0.160.0",
+    "topojson-client": "^3.1.0"
+  }
+}
+
