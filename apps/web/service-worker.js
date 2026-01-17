@@ -78,9 +78,9 @@ self.addEventListener('fetch', (event) => {
 		return;
 	}
 
-	// Only cache same-origin assets and a small allowlist of third-party modules.
-	const CACHEABLE_THIRD_PARTY_ORIGINS = new Set(['https://unpkg.com']);
-	if (!isSameOrigin && !CACHEABLE_THIRD_PARTY_ORIGINS.has(url.origin)) {
+	// Only cache same-origin assets; do not allowlist third-party CDNs by default.
+	// This prevents the app from implicitly caching remote CDN modules (e.g. unpkg.com).
+	if (!isSameOrigin) {
 		event.respondWith(fetch(request));
 		return;
 	}

@@ -1,54 +1,190 @@
-# [WIP] Situation Monitor PWA
+\# Situation Monitor PWA
 
-A personal, installable PWA for situational awareness.
 
-This project is a situational awareness console inspired by strategic command‑center 
-interfaces (e.g. Defcon). The goal is to consolidate signals into a calm, 
-focused UI that helps users understand what is happening in a chosen region.
 
----
+A personal, installable Progressive Web App for calm, focused situational awareness.
 
-## Demo with static data
 
-[https://j-tynan.github.io/Sit-Mon-PWA/](https://j-tynan.github.io/Sit-Mon-PWA/)
 
----
+Situation Monitor is a modular geospatial console inspired by strategic command‑center
 
-## Core Principles
+interfaces (e.g. \*Defcon\*). It consolidates geographic and contextual signals into a
 
-- **Architect globally, filter locally** — designed to work anywhere; users select a country or region
-  to focus on (initial development focuses on the United Kingdom).
-- **Separation of concerns** — core logic is independent of data sources; layers/sensors can be
-  added or removed without touching the core.
-- **Signal over noise** — motion, colour, and alerts are meaningful; avoid clutter and addictive
-  interfaces.
-- **Offline‑first, low‑cost** — installable PWA, local storage where possible, minimal backend usage.
+low‑noise, map‑centric UI that helps users understand what is happening in a chosen
+
+country or region.
+
+
+
+Initial development focuses on the United Kingdom, but the architecture is designed
+
+to scale globally.
+
+
 
 ---
 
-## Run (web)
+
+
+\## Live demo (static data)
+
+
+
+https://j-tynan.github.io/Sit-Mon-PWA/
+
+
+
+---
+
+
+
+\## Core principles
+
+
+
+\- \*\*Architect globally, filter locally\*\*  
+
+&nbsp; Data is sourced at global or national scale, then filtered client‑side to the
+
+&nbsp; user’s selected country or region.
+
+
+
+\- \*\*Separation of concerns\*\*  
+
+&nbsp; Rendering, data loading, filtering, and UI are cleanly separated. Layers can be
+
+&nbsp; added, removed, or replaced without touching core logic.
+
+
+
+\- \*\*Signal over noise\*\*  
+
+&nbsp; Motion, colour, labels, and density are meaningful. The UI avoids clutter,
+
+&nbsp; gamification, and addictive interaction patterns.
+
+
+
+\- \*\*Offline‑first, low‑cost\*\*  
+
+&nbsp; Designed as an installable PWA with static assets, local caching, and minimal
+
+&nbsp; backend requirements.
+
+
+
+---
+
+
+
+\## Current features
+
+
+
+\- Interactive 3D globe renderer
+
+\- World and UK administrative boundaries
+
+\- UK populated places with zoom‑responsive label density
+
+\- UK airports and ports (Natural Earth)
+
+\- UK local authority districts (ONS Open Geography)
+
+\- Demo bin‑collection layer (NELC)
+
+\- Region and council search with animated focus
+
+\- Layer toggling and lightweight settings panel
+
+\- Fully static deployment (GitHub Pages compatible)
+
+
+
+---
+
+
+
+\## Data sources
+
+
+
+\- \*\*ONS Open Geography\*\* — UK administrative boundaries
+
+\- \*\*Natural Earth\*\* — world boundaries, populated places, airports, ports
+
+\- \*\*NELC\*\* — bin collection demo data
+
+\- \*\*Heroicons\*\* — UI icons
+
+
+
+---
+
+
+
+\## Data pipelines
+
+
+
+All geospatial data is processed into production‑ready assets before being loaded
+
+by the app. This keeps runtime logic simple and performance predictable.
+
+
+
+\### UK Local Authority Districts (LAD)
+
+
+
+\- Source: ONS Open Geography GeoJSON
+
+\- Processed with Mapshaper
+
+\- Simplified and exported as TopoJSON
+
+\- Output: `src/data/uk-lads.v1.topo.json`
+
+
+
+\### UK Populated Places
+
+
+
+\- Source: Natural Earth populated places
+
+\- Filtered to UK only
+
+\- Properties trimmed to required fields
+
+\- Converted to TopoJSON with stable object naming
+
+\- Output: `src/data/uk-populated-places.v2.topo.json`
+
+
+
+This significantly reduces payload size and improves parse performance while
+
+preserving label behaviour and zoom‑based density.
+
+
+
+---
+
+
+
+\## Running locally (web)
+
+
 
 From `apps/web`:
 
-```
+
+
+```bash
+
 http-server -c 30 .
-```
 
-Open the printed localhost URL.
 
-## Bin collection demo (NELC)
 
-The demo bin layer uses North East Lincolnshire Council (NELC) and postcode `DN32 0NE`.
-
-To enable it locally:
-
-- Start the local proxy: `node ./apps/web/dev/nelc-proxy.mjs`
-- In the app, enable the layer **“Bin collection (demo: Yorkshire & Humber / NELC)”**
-
-More details: [apps/web/dev/README-nelc-proxy.md](apps/web/dev/README-nelc-proxy.md)
-
----
-
-## Status
-
-Work in progress — early architecture and UI exploration. No live data sources enabled by default.
