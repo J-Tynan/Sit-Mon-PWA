@@ -1,4 +1,4 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 import { BaseLayer } from './BaseLayer.js';
 import { latLongToVector3 } from '../globe/latLong.js';
 
@@ -105,8 +105,23 @@ export class BoundaryLayer extends BaseLayer {
         return res.json();
       })
       .then((json) => {
-        this.boundaryData = json;
-        return json;
+        // Support TopoJSON (Topology) inputs by converting to GeoJSON.
+        try {
+          // Lazy import of loader helper to avoid adding a runtime dependency unless needed.
+          // This module exports `loadGeoData` which uses topojson-client's `feature`.
+          // Import relative to src/layers — path: '../lib/geo.js'
+          // eslint-disable-next-line import/no-cycle
+          return import('../lib/geo.js').then(({ loadGeoData }) =>
+          // Support sync or async conversion results by normalising to a Promise
+          Promise.resolve(loadGeoData(json)).then((geo) => {
+            this.boundaryData = geo;
+            return geo;
+          })
+        );
+        } catch (e) {
+          this.boundaryData = json;
+          return json;
+        }
       });
 
     return this.dataPromise;

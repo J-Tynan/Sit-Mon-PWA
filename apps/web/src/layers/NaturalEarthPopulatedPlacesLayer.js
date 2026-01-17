@@ -1,7 +1,8 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import shp from 'https://unpkg.com/shpjs@6.2.0/dist/shp.esm.min.js';
+import * as THREE from 'three';
+import shp from 'shpjs';
 import { BaseLayer } from './BaseLayer.js';
 import { latLongToVector3 } from '../globe/latLong.js';
+import { loadGeoData } from '../lib/geo.js';
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -276,7 +277,7 @@ export class NaturalEarthPopulatedPlacesLayer extends BaseLayer {
     if (this.geojson) return Promise.resolve(this.geojson);
     if (this.dataPromise) return this.dataPromise;
 
-    // Support either a GeoJSON URL (already filtered) or a ZIP (shpjs) archive.
+    // Support either a GeoJSON/TopoJSON URL (already filtered) or a ZIP (shpjs) archive.
     if (this.geojsonUrl) {
       this.dataPromise = fetch(this.geojsonUrl)
         .then((res) => {
@@ -284,7 +285,9 @@ export class NaturalEarthPopulatedPlacesLayer extends BaseLayer {
           return res.json();
         })
         .then((parsed) => {
-          const geojson = normalizeParsedGeoJson(parsed);
+          // Convert TopoJSON -> GeoJSON where necessary, then normalize.
+          const converted = loadGeoData(parsed);
+          const geojson = normalizeParsedGeoJson(converted);
           this.geojson = geojson;
           return geojson;
         });
@@ -296,7 +299,9 @@ export class NaturalEarthPopulatedPlacesLayer extends BaseLayer {
         })
         .then(async (buffer) => {
           const parsed = await shp(buffer);
-          const geojson = normalizeParsedGeoJson(parsed);
+          // shp usually returns GeoJSON, but pass through loadGeoData for safety.
+          const converted = loadGeoData(parsed);
+          const geojson = normalizeParsedGeoJson(converted);
           this.geojson = geojson;
           return geojson;
         });

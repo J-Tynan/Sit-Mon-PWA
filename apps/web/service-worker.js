@@ -25,11 +25,16 @@ const ASSETS = [
 	'src/ui/BinPanel.js',
 	'src/bin/nelcAdapter.js',
 	'src/data/uk-boundaries.json',
-	'src/data/uk-populated-places-10m.json',
+	'src/data/uk-populated-places.v1.json',
+	'node_modules/topojson-client/src/index.js',
+	'node_modules/three/build/three.module.js',
+	'node_modules/shpjs/dist/shp.esm.min.js',
+	'icons/paper-airplane.svg',
+	'icons/lifebuoy.svg',
 	'src/data/world-countries.json',
 	'src/data/uk-regions.json',
 	'src/data/english-regions.json',
-	'src/data/uk-local-authority-districts.json',
+	'src/data/uk-lads.v1.topo.json',
 	'src/data/nelc-demo-subareas.json',
 	'src/data/nelc-demo-collections-5ahead.json',
 	'icons/app-icon.svg'
@@ -73,9 +78,9 @@ self.addEventListener('fetch', (event) => {
 		return;
 	}
 
-	// Only cache same-origin assets and a small allowlist of third-party modules.
-	const CACHEABLE_THIRD_PARTY_ORIGINS = new Set(['https://unpkg.com']);
-	if (!isSameOrigin && !CACHEABLE_THIRD_PARTY_ORIGINS.has(url.origin)) {
+	// Only cache same-origin assets; do not allowlist third-party CDNs by default.
+	// This prevents the app from implicitly caching remote CDN modules (e.g. unpkg.com).
+	if (!isSameOrigin) {
 		event.respondWith(fetch(request));
 		return;
 	}

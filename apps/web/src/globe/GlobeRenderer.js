@@ -17,7 +17,7 @@
  * - Decide which layers are active
  */
 
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 import { CameraController } from './CameraController.js';
 import { Starfield } from './Starfield.js';
 

@@ -1,4 +1,4 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 import { FilteredBoundaryLayer } from './FilteredBoundaryLayer.js';
 import { latLongToVector3 } from '../globe/latLong.js';
 
@@ -60,7 +60,7 @@ export class NelcBinDemoLayer extends FilteredBoundaryLayer {
     super({
       id: rest.id || 'bin-demo-nelc',
       name: rest.name || 'Bin collection (demo: NELC)',
-      dataUrl: rest.dataUrl || '/src/data/uk-local-authority-districts.json',
+      dataUrl: rest.dataUrl || '/src/data/uk-lads.v1.topo.json',
       color: rest.color ?? 0xff4d4d,
       filterFn: (feature) => feature?.properties?.id === 'E06000012',
       ...rest
