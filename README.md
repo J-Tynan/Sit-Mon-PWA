@@ -8,11 +8,6 @@ focused UI that helps users understand what is happening in a chosen region.
 
 ---
 
-## Demo with static data
-
-[https://j-tynan.github.io/Sit-Mon-PWA/](https://j-tynan.github.io/Sit-Mon-PWA/)
-
----
 
 ## Core Principles
 
