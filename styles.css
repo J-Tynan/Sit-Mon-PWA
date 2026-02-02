@@ -1,0 +1,557 @@
+:root {
+  --bg: #050505;
+  --panel: #0b0b0b;
+  --border: #141414;
+  --text: #d6d6d6;
+  --muted: #a0a0a0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+#topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(#070707, #050505);
+
+  position: relative;
+  z-index: 10;
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-left: auto;      /* pushes controls to the right */
+  justify-content: flex-end;
+
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Visually group related controls without affecting layout */
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* High-priority controls resist wrapping */
+.control-group.primary {
+  flex-shrink: 0;
+}
+
+/* Medium-priority controls wrap sooner */
+.control-group.secondary {
+  flex-shrink: 1;
+}
+
+/* Lowest-priority controls wrap first */
+.control-group.tertiary {
+  flex-shrink: 1;
+}
+
+/* Subtle separation between groups */
+.control-group:not(:last-child) {
+  margin-right: 6px;
+}
+
+.controls select,
+.controls button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+}
+
+/* Keep long region names from forcing layout overflow */
+.controls select {
+  max-width: min(42vw, 340px);
+}
+
+@media (max-width: 600px) {
+  .controls {
+    justify-content: flex-start;
+  }
+}
+
+.controls button:hover { border-color: #2a2a2a; }
+.controls button:active { transform: translateY(1px); }
+
+#zoomLevel {
+  min-width: 72px;
+  text-align: center;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+#settingsBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+#settingsBtn:hover { border-color: #2a2a2a; }
+#settingsBtn:active { transform: translateY(1px); }
+
+#app {
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+}
+
+#attribution {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  z-index: 5;
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(214, 214, 214, 0.75);
+  background: rgba(8, 8, 8, 0.25);
+  border: 1px solid rgba(20, 20, 20, 0.7);
+  border-radius: 8px;
+  padding: 6px 8px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  /* Use a deterministic width so the attribution wraps consistently during resize */
+  width: calc(100% - 24px);
+  max-width: 480px;
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+}
+
+/* Compact / narrow viewport layout adjustments */
+@media (max-width: 900px) {
+  /* Attribution becomes centered and constrained to a single column at the bottom */
+  #attribution {
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    max-width: calc(100% - 24px);
+    text-align: center;
+    white-space: normal;
+  }
+
+  /* Status moves above attribution to avoid overlap */
+  #status {
+    bottom: 72px;
+    left: 12px;
+    right: 12px;
+    max-width: calc(100% - 24px);
+  }
+}
+
+#status {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  z-index: 6;
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(214, 214, 214, 0.92);
+  background: rgba(8, 8, 8, 0.35);
+  border: 1px solid rgba(20, 20, 20, 0.8);
+  border-radius: 8px;
+  padding: 6px 8px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  max-width: min(520px, calc(100% - 24px));
+}
+
+#status:empty {
+  display: none;
+}
+
+#fps {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(214, 214, 214, 0.85);
+  background: rgba(8, 8, 8, 0.25);
+  border: 1px solid rgba(20, 20, 20, 0.7);
+  border-radius: 8px;
+  padding: 4px 8px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+#attribution a {
+  color: rgba(179, 245, 255, 0.95);
+  text-decoration: none;
+}
+
+#attribution a:hover {
+  text-decoration: underline;
+}
+
+#globe-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Prevent baseline whitespace under the WebGL canvas */
+#globe-container canvas {
+  display: block;
+}
+
+#layers-panel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  min-width: 220px;
+  background: rgba(12, 12, 12, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+#bin-panel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: min(340px, calc(100% - 32px));
+  background: rgba(12, 12, 12, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  display: none;
+}
+
+#bin-panel.visible {
+  display: block;
+}
+
+#settings-panel {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(320px, calc(100% - 32px));
+  background: rgba(12, 12, 12, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 7;
+  /* Avoid causing page-level overflow: constrain height and scroll internally */
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+#settingsMinBtn {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font: inherit;
+  cursor: pointer;
+  line-height: 1;
+  min-width: 28px;
+}
+
+#settingsMinBtn:hover { border-color: #2a2a2a; }
+#settingsMinBtn:active { transform: translateY(1px); }
+
+.settings-title {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.settings-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.settings-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #1e5bff;
+}
+
+.settings-row button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.settings-row button:hover { border-color: #2a2a2a; }
+.settings-row button:active { transform: translateY(1px); }
+
+.bin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bin-title {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.bin-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.bin-toggle {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+#bin-panel .bin-toggle:hover { border-color: #2a2a2a; }
+#bin-panel .bin-toggle:active { transform: translateY(1px); }
+
+.bin-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bin-controls select {
+  flex: 1 1 auto;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  max-width: 100%;
+}
+
+.bin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bin-row {
+  display: grid;
+  grid-template-columns: 16px 84px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 8px;
+  border: 1px solid rgba(20, 20, 20, 0.75);
+  border-radius: 8px;
+  background: rgba(8, 8, 8, 0.35);
+}
+
+.bin-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+}
+
+.bin-date {
+  font-variant-numeric: tabular-nums;
+  color: rgba(214, 214, 214, 0.92);
+}
+
+.bin-stream {
+  color: rgba(214, 214, 214, 0.85);
+}
+
+.layers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.layers-title {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.layers-toggle {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font: inherit;
+  cursor: pointer;
+}
+#layers-panel .layers-toggle:hover { border-color: #2a2a2a; }
+#layers-panel .layers-toggle:active { transform: translateY(1px); }
+
+.layers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.layer-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+#layers-panel button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font: inherit;
+}
+
+#layers-panel button:hover { border-color: #2a2a2a; }
+#layers-panel button:active { transform: translateY(1px); }
+
+/* Accessible “screen reader only” label */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile refinement: reduce visual weight without changing layout */
+@media (max-width: 600px) {
+
+  /* Remove background pills so wrapped rows feel lighter */
+  .control-group {
+    background: transparent;
+    padding: 0;
+  }
+
+  /* Slightly tighten control spacing on small screens */
+  .controls {
+    gap: 6px;
+    row-gap: 6px;
+  }
+
+  /* Make inputs and selects feel less cramped */
+  .controls select,
+  .controls input,
+  .controls button {
+    padding: 6px 8px;
+  }
+
+  /* Keep title visually distinct but compact */
+  .title {
+    font-size: 15px;
+  }
+}
