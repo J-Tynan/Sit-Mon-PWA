@@ -1,227 +1,48 @@
-\# \[WIP] Situation Monitor PWA
+# [WIP] Situation Monitor PWA
 
+A personal, installable PWA for situational awareness.
 
-
-A personal, installable Progressive Web App for calm, focused situational awareness.
-
-
-
-Situation Monitor is a modular geospatial console inspired by strategic command‑center 
-
-(C2) interfaces (e.g. \*Defcon\*). It consolidates geographic and contextual signals into 
-
-a low‑noise, map‑centric UI that helps users understand what is happening in a chosen
-
-country or region.
-
-
-
-Initial development focuses on the United Kingdom, but the architecture is designed
-
-to scale globally.
-
-
+This project is a situational awareness console inspired by strategic command‑center
+interfaces (e.g. Defcon). The goal is to consolidate signals into a calm,
+focused UI that helps users understand what is happening in a chosen region.
 
 ---
 
+## Core Principles
 
-
-\## Live demo (static data)
-
-
-
-https://j-tynan.github.io/Sit-Mon-PWA/
-
-
-
----
-
-
-
-\## Core principles
-
-
-
-\- \*\*Architect globally, filter locally\*\*
-
-  Data is sourced at global or national scale, then filtered client‑side to the
-
-  user’s selected country or region.
-
-
-
-\- \*\*Separation of concerns\*\*
-
-  Rendering, data loading, filtering, and UI are cleanly separated. Layers can be
-
-  added, removed, or replaced without touching core logic.
-
-
-
-\- \*\*Signal over noise\*\*
-
-  Motion, colour, labels, and density are meaningful. The UI avoids clutter,
-
-  gamification, and addictive interaction patterns.
-
-
-
-\- \*\*Offline‑first, low‑cost\*\*
-
-  Designed as an installable PWA with static assets, local caching, and minimal
-
-  backend requirements.
-
-
+- **Architect globally, filter locally** — designed to work anywhere; users select a country or region
+  to focus on (initial development focuses on the United Kingdom).
+- **Separation of concerns** — core logic is independent of data sources; layers/sensors can be
+  added or removed without touching the core.
+- **Signal over noise** — motion, colour, and alerts are meaningful; avoid clutter and addictive
+  interfaces.
+- **Offline‑first, low‑cost** — installable PWA, local storage where possible, minimal backend usage.
 
 ---
 
-
-
-\## Current features
-
-
-
-\- Interactive 3D globe renderer
-
-\- World and UK administrative boundaries
-
-\- UK populated places with zoom‑responsive label density
-
-\- UK airports and ports (Natural Earth)
-
-\- UK local authority districts (ONS Open Geography)
-
-\- Demo bin‑collection layer (NELC)
-
-\- Region and council search with animated focus
-
-\- Layer toggling and lightweight settings panel
-
-\- Fully static deployment (GitHub Pages compatible)
-
-
-
----
-
-
-
-\## Data sources
-
-
-
-\- \*\*ONS Open Geography\*\* — UK administrative boundaries
-
-\- \*\*Natural Earth\*\* — world boundaries, populated places, airports, ports
-
-\- \*\*NELC\*\* — bin collection demo data
-
-\- \*\*Heroicons\*\* — UI icons
-
-
-
----
-
-
-
-\## Data pipelines
-
-
-
-All geospatial data is processed into production‑ready assets before being loaded
-
-by the app. This keeps runtime logic simple and performance predictable.
-
-
-
-\### UK Local Authority Districts (LAD)
-
-
-
-\- Source: ONS Open Geography GeoJSON
-
-\- Processed with Mapshaper
-
-\- Simplified and exported as TopoJSON
-
-\- Output: `src/data/uk-lads.v1.topo.json`
-
-
-
-\### UK Populated Places
-
-
-
-\- Source: Natural Earth populated places
-
-\- Filtered to UK only
-
-\- Properties trimmed to required fields
-
-\- Converted to TopoJSON with stable object naming
-
-\- Output: `src/data/uk-populated-places.v2.topo.json`
-
-
-
-This significantly reduces payload size and improves parse performance while
-
-preserving label behaviour and zoom‑based density.
-
-
-
----
-
-
-
-\## Running locally (web)
-
-
+## Run (web)
 
 From `apps/web`:
 
-
-
+```
 http-server -c 30 .
+```
 
 Open the printed localhost URL.
 
+## Bin collection demo (NELC)
 
+The demo bin layer uses North East Lincolnshire Council (NELC) and postcode `DN32 0NE`.
 
----
+To enable it locally:
 
+- Start the local proxy: `node ./apps/web/dev/nelc-proxy.mjs`
+- In the app, enable the layer **“Bin collection (demo: Yorkshire & Humber / NELC)”**
 
-
-\## Project status
-
-
-
-Active development.
-
-
-
-The core architecture, rendering pipeline, and data workflows are now stable.
-
-Current work focuses on refinement, performance tuning, and selective feature
-
-expansion rather than rapid prototyping.
-
-
-
-No live data feeds are enabled by default. Work in progress.
-
-
+More details: [apps/web/dev/README-nelc-proxy.md](apps/web/dev/README-nelc-proxy.md)
 
 ---
 
+## Status
 
-
-\## License
-
-Personal project. Licensing to be defined if the project is opened more broadly.
-
-
-
-
-
-
+Work in progress — early architecture and UI exploration. No live data sources enabled by default.
