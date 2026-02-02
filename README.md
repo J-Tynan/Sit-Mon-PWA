@@ -29,20 +29,3 @@ http-server -c 30 .
 ```
 
 Open the printed localhost URL.
-
-## Bin collection demo (NELC)
-
-The demo bin layer uses North East Lincolnshire Council (NELC) and postcode `DN32 0NE`.
-
-To enable it locally:
-
-- Start the local proxy: `node ./apps/web/dev/nelc-proxy.mjs`
-- In the app, enable the layer **“Bin collection (demo: Yorkshire & Humber / NELC)”**
-
-More details: [apps/web/dev/README-nelc-proxy.md](apps/web/dev/README-nelc-proxy.md)
-
----
-
-## Status
-
-Work in progress — early architecture and UI exploration. No live data sources enabled by default.
